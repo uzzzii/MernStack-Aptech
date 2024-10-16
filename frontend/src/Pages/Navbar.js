@@ -1,22 +1,24 @@
-import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import React from 'react';
+import { Link } from 'react-router-dom'; // Use Link for navigation if using React Router
 
 function Navbar1() {
   return (
-    <Navbar bg="dark" data-bs-theme="dark">
-    <Container>
-      <Navbar.Brand href="#home">REACT Project</Navbar.Brand>
-      <Nav className="me-auto">
-        < Nav.Link href="#">Home</Nav.Link>
-        <Nav.Link href="#">About</Nav.Link>
-        <Nav.Link href="#">login</Nav.Link>
-        <Nav.Link href="#">Contact</Nav.Link>
-        <Nav.Link href="#">Services</Nav.Link>
-        <Nav.Link href="#">Register</Nav.Link>
-      </Nav>
-    </Container>
-  </Navbar>
-  )
+    <nav className="bg-gray-800 text-white">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <div className="text-lg font-semibold">
+          <Link to="/" className="hover:text-gray-300">REACT Project</Link>
+        </div>
+        <div className="space-x-4">
+          <Link to="/" className="hover:text-gray-300">Home</Link>
+          <Link to="/about" className="hover:text-gray-300">About</Link>
+          <Link to="/login" className="hover:text-gray-300">Login</Link>
+          <Link to="/contact" className="hover:text-gray-300">Contact</Link>
+          <Link to="/services" className="hover:text-gray-300">Services</Link>
+          <Link to="/register" className="hover:text-gray-300">Register</Link>
+        </div>
+      </div>
+    </nav>
+  );
 }
 
-export default Navbar1
+export default Navbar1;
