@@ -16,9 +16,21 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => 
+    {
     e.preventDefault();
     console.log(user);
+    const response = await fetch("http://localhost:8000/auth/registration",
+    {
+      method: "POST",
+      headers:
+      {
+        "content-Type":"application/json",
+      },
+      body:JSON.stringify(user)
+    })
+    const data = await response.json();
+  
   };
 
   return (

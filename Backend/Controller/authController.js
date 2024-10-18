@@ -6,13 +6,13 @@ const Login = async (req, res) => {
     const { email, password } = req.body;
     const userExist = await User.findOne({ email });
     if (!userExist) {
-      return res.status(400).json({ message: "Invalid Credentials" });
+      return res.status(400).json({ msg: "Invalid Credentials" });
     }
     const isPasswordValid = await bcrypt.compare(password, userExist.password);
     if (isPasswordValid) {
-      res.status(200).json({ message: "Login Successfully" });
+      res.status(200).json({ msg: "Login Successfully" });
     } else {
-      res.status(400).json({ message: "Invalid Credentials" });
+      res.status(400).json({ msg: "Invalid Credentials" });
     }
   } catch (error) {
     console.error(error);
@@ -33,7 +33,7 @@ const Registration = async (req, res) => {
       password: hash_password,
       phone,
     });
-    res.status(201).json({ msg: userCreated });
+    res.status(201).json({ msg: "User Register Successfully" });
   } catch (error) {
     console.log(error);
     res.status(200).json({ msg: error });
