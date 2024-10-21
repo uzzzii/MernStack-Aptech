@@ -40,6 +40,9 @@ const Registration = async (req, res) => {
   }
 };
 
+
+
+
 const getUsers = async () => {
   try {
     const users = await User.find();

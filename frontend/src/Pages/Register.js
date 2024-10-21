@@ -7,6 +7,7 @@ function Register() {
     password: "",
     phone: "",
   });
+  const [message, setMessage] = useState({ text: "", type: "" }); // State for messages
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -16,27 +17,42 @@ function Register() {
     });
   };
 
-  const handleSubmit = async(e) => 
-    {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
-    const response = await fetch("http://localhost:8000/auth/registration",
-    {
-      method: "POST",
-      headers:
-      {
-        "content-Type":"application/json",
-      },
-      body:JSON.stringify(user)
-    })
-    const data = await response.json();
-  
+    try {
+      const response = await fetch("http://localhost:8000/auth/registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+
+      const data = await response.json();
+
+      // Check if registration was successful
+      if (response.ok) {
+        setMessage({ text: "Registered successfully!", type: "success" }); // Set success message
+      } else {
+        setMessage({ text: data.msg, type: "error" }); // Set error message from server
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setMessage({ text: "An error occurred. Please try again.", type: "error" }); // Set fetch error message
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-900">
       <div className="bg-gray-800 text-white rounded-lg shadow-lg p-8 w-96">
         <h1 className="text-2xl text-center mb-6">Register</h1>
+        
+        {message.text && (
+          <div className={`mb-4 p-2 rounded ${message.type === "success" ? "bg-green-600" : "bg-red-600"}`}>
+            {message.text}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -45,6 +61,7 @@ function Register() {
             onChange={handleInput}
             placeholder="Username"
             className="bg-gray-700 text-white rounded mb-4 w-full p-2"
+            required
           />
           <input
             type="email"
@@ -53,6 +70,7 @@ function Register() {
             onChange={handleInput}
             placeholder="Email"
             className="bg-gray-700 text-white rounded mb-4 w-full p-2"
+            required
           />
           <input
             type="password"
@@ -61,6 +79,7 @@ function Register() {
             onChange={handleInput}
             placeholder="Password"
             className="bg-gray-700 text-white rounded mb-4 w-full p-2"
+            required
           />
           <input
             type="tel"
@@ -69,6 +88,7 @@ function Register() {
             onChange={handleInput}
             placeholder="Phone No"
             className="bg-gray-700 text-white rounded mb-4 w-full p-2"
+            required
           />
           <button
             type="submit"

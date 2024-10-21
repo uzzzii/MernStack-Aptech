@@ -7,4 +7,6 @@ authRoutes.post('/login',Login)
 
 authRoutes.post('/registration',Registration)
 
+authRoutes.post('/contact',contact)
+
 module.exports = authRoutes;
