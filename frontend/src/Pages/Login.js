@@ -41,7 +41,7 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900">
+    <div className="flex items-center justify-center min-h-screen">
       <div className="bg-gray-800 text-white rounded-lg shadow-lg p-8 w-96">
         <h1 className="text-2xl text-center mb-6">Login</h1>
         

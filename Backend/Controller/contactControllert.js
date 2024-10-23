@@ -1,19 +1,19 @@
-import Info = require("../Model/contactSchema");
+const Info = require("../Model/contactSchema");
 
-const contact = async (req, res) => {
+const Contact = async (req, res) => {
     try {
       const { username, phone, messages } = req.body;
       const userfeed = await Info.create({
         username,
         phone,
-        messages,
+        messages
       });
 
      return res.status(201).json({contactdetails:userfeed  , msg: "Message send" });
     } catch (error) {
       console.log(error);
-      res.status(200).json({ msg: error });
+      res.status(500).json({ msg: error });
     }
   };
   
-  module.exports = {contact};
+  module.exports = {Contact};

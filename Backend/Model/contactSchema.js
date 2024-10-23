@@ -6,6 +6,7 @@ const contactUSInfo = new mongoose.Schema({
   message: {type: String, require: true}
 });
 
+
 const Info = mongoose.model("contactUSinfo", contactUSInfo);
 
 module.exports = Info;

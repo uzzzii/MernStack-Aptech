@@ -10,7 +10,10 @@ const Login = async (req, res) => {
     }
     const isPasswordValid = await bcrypt.compare(password, userExist.password);
     if (isPasswordValid) {
-      res.status(200).json({ msg: "Login Successfully" });
+     return res.status(200).json({ msg: "Login Successfully",
+      token:await userExist.generateToken()
+      });
+      
     } else {
       res.status(400).json({ msg: "Invalid Credentials" });
     }
@@ -27,21 +30,23 @@ const Registration = async (req, res) => {
       return res.status(400).send("User Already Exist");
     }
     const hash_password = await bcrypt.hash(password, 10);
-    const userCreated = User.create({
+    
+    const userCreated =await User.create({
       username,
       email,
       password: hash_password,
       phone,
     });
-    res.status(201).json({ msg: "User Register Successfully" });
+   return res.status(201).json({ msg: userCreated,
+      success: "User Created Successfully",
+      token:await userCreated.generateToken()
+    });
+    
   } catch (error) {
     console.log(error);
     res.status(200).json({ msg: error });
   }
 };
-
-
-
 
 const getUsers = async () => {
   try {
