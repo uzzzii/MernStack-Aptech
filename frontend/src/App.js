@@ -6,7 +6,7 @@ import Navbar1 from './Pages/Navbar';
 import Register from './Pages/Register';
 import Services from './Pages/Services';
 import ContactForm from './Pages/Contact';
-import Test from './Pages/Test';
+import Footer from './Pages/Footer';
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
         <Route path='/contact' element={<ContactForm />} />
         <Route path='/register' element={<Register />} />
         <Route path='/services' element={<Services />} />
-        <Route path='/test' element={<Test />} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
