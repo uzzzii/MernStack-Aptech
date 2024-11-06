@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useAuth } from "../users/auth";
 
 function Register() {
   const [user, setUser] = useState({
@@ -7,6 +8,7 @@ function Register() {
     password: "",
     phone: "",
   });
+  const storeTokenInLS = useAuth();
   const [message, setMessage] = useState({ text: "", type: "" }); // State for messages
 
   const handleInput = (e) => {
@@ -29,10 +31,18 @@ function Register() {
       });
 
       const data = await response.json();
+      storeTokenInLS(data.token)
+
 
       // Check if registration was successful
       if (response.ok) {
         setMessage({ text: "Registered successfully!", type: "success" }); // Set success message
+        setUser({
+          username: "",
+          email: "",
+          password: "",
+          phone: "",
+        });
       } else {
         setMessage({ text: data.msg, type: "error" }); // Set error message from server
       }

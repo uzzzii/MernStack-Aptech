@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useAuth } from "../users/auth";
 
 function Login() {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const storeTokenInLS = useAuth();
   const [message, setMessage] = useState({ text: "", type: "" }); // New state for message
 
   const handleInput = (e) => {
@@ -27,6 +29,7 @@ function Login() {
       });
 
       const data = await response.json();
+      storeTokenInLS(data.token)
       
       // Check if login was successful
       if (response.ok) {
