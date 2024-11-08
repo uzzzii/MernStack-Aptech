@@ -7,7 +7,7 @@ import abc1 from "../assets/images/abc1.jpg"; // Adjust the path based on your f
 const HomePage = () => {
   return (
     <div className="min-h-screen">
-      <section className="bg-indigo-600 text-white py-20">
+      <section className="bg-indigo-600 text-black py-20">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold mb-2">Welcome to My Website</h2>
           <p className="text-lg mb-6">
