@@ -8,7 +8,7 @@ function Register() {
     password: "",
     phone: "",
   });
-  const storeTokenInLS = useAuth();
+  // const storeTokenInLS = useAuth();
   const [message, setMessage] = useState({ text: "", type: "" }); // State for messages
 
   const handleInput = (e) => {
@@ -31,7 +31,7 @@ function Register() {
       });
 
       const data = await response.json();
-      storeTokenInLS(data.token)
+      // storeTokenInLS(data.token)
 
 
       // Check if registration was successful
