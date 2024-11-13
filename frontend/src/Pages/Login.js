@@ -6,7 +6,7 @@ function Login() {
     email: "",
     password: "",
   });
-  // const storeTokenInLS = useAuth();
+  const {storeTokenInLS} = useAuth();
   const [message, setMessage] = useState({ text: "", type: "" }); // New state for message
 
   const handleInput = (e) => {
@@ -29,11 +29,16 @@ function Login() {
       });
 
       const data = await response.json();
-      // storeTokenInLS(data.token)
+      
       
       // Check if login was successful
       if (response.ok) {
-        setMessage({ text: "Logged in successfully", type: "success" }); // Set success message
+        setMessage({ text: "Logined successfully!", type: "success" }); // Set success message
+        storeTokenInLS(data.token);
+        setUser({
+          email: "",
+          password: "",
+        });
       } else {
         setMessage({ text: data.msg, type: "error" }); // Set error message from server
       }

@@ -58,4 +58,15 @@ const getUsers = async () => {
 }
 };
 
-module.exports = { Login, Registration, getUsers };
+const user = async(req,res)=>
+{
+  try {
+    const userData = req.user;
+    console.log(userData);
+    return res.status(200).json({msg:userData});
+  } catch (error) {
+    
+  }
+}
+
+module.exports = { Login, Registration, getUsers,user };

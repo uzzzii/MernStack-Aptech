@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) =>
     return localStorage.setItem("token", serverToken);
   };
 
-  let isLoggedIn = !!token
+  let isLoggedIn = !!token;
   const LogoutUser = () => 
     {
     setToken("");
