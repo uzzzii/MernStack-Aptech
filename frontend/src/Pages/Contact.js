@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useAuth } from "../users/auth";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -6,8 +7,21 @@ const ContactForm = () => {
     phone: "",
     message: "",
   });
+
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  
+  const [userData, setUserData] = useState(true);
+  const {user} = useAuth();
+
+    if(userData && user){
+      setFormData({
+      username: user.username,
+      phone: user.phone,
+      msg:""
+    });
+    setUserData(false);
+    }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
