@@ -122,7 +122,7 @@ const ContactForm = () => {
             name="username"
             value={formData.username}
             onChange={handleChange}
-            required
+            disabled
             className="mt-1 block w-full border border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 text-white bg-gray-800"
           />
         </div>
@@ -133,7 +133,7 @@ const ContactForm = () => {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            required
+            disabled
             className="mt-1 block w-full border border-gray-600 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 p-3 text-white bg-gray-800"
           />
         </div>
