@@ -121,28 +121,32 @@ function Services() {
 
       {/* Display fetched services */}
       <div className="bg-gray-800 text-white rounded-lg shadow-lg p-8 m-5">
-        <h2 className="text-xl font-semibold mb-4">Available Services</h2>
-        {data ? (
-          Array.isArray(data) ? (
-            <ul className="space-y-4">
-              {data.map((service) => (
-                <li
-                  key={service.id}
-                  className="p-4 bg-gray-700 rounded-lg shadow-md"
-                >
-                  <h3 className="text-lg font-bold">{service.name}</h3>
-                  <p>{service.description}</p>
-                  <p className="text-green-500 mt-2">${service.price}</p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>Data is not in the expected format</p>
-          )
-        ) : (
-          <p>Loading services...</p>
-        )}
+  <h2 className="text-2xl font-semibold mb-6 text-center text-green-400">Available Services</h2>
+  {data ? (
+    Array.isArray(data) ? (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {data.map((service) => (
+          <div
+            key={service.id}
+            className="bg-gray-700 rounded-lg shadow-xl transform transition-transform hover:scale-105 hover:shadow-2xl p-6"
+          >
+            <h3 className="text-xl font-semibold text-red-500 mb-2">{service.name}</h3>
+            <p className="text-gray-300 text-base mb-4">{service.description}</p>
+            <div className="flex justify-between items-center">
+              <p className="text-lg text-green-400 font-bold">${service.price}</p>
+            
+            </div>
+          </div>
+        ))}
       </div>
+    ) : (
+      <p>Data is not in the expected format</p>
+    )
+  ) : (
+    <p>Loading services...</p>
+  )}
+</div>
+
     </>
   );
 }
