@@ -15,5 +15,16 @@ const Contact = async (req, res) => {
       res.status(500).json({ msg: error });
     }
   };
+
+
+  const getAllContacts = async(req,res)=>{
+    try {
+        const contact = await Info.find()
+        console.log(contact);
+        return res.status(200).json(contact);
+    } catch (error) {
+        console.log(error);
+    }
+}
   
-  module.exports = {Contact};
+  module.exports = {Contact, getAllContacts};
