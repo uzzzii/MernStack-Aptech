@@ -1,5 +1,5 @@
 const express = require('express');
-const { Login, Registration, user } = require('../Controller/authController');
+const { Login, Registration, user, getUsers } = require('../Controller/authController');
 const { Contact } = require('../Controller/contactControllert');
 const authMiddleware = require('../middleware/auth-middleware');
 
@@ -11,6 +11,6 @@ authRoutes.post('/registration',Registration)
 
 authRoutes.post('/contact',Contact)
 
-authRoutes.get('/user', authMiddleware, user);
+authRoutes.get('/getUsers', authMiddleware, getUsers);
 
 module.exports = authRoutes;

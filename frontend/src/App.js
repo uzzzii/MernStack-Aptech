@@ -7,6 +7,10 @@ import Register from './Pages/Register';
 import Services from './Pages/Services';
 import ContactForm from './Pages/Contact';
 import Footer from './Pages/Footer';
+import { AdminLayout } from './Layout/AdminLayout';
+import AdminContacts from './Pages/AdminContacts';
+import AdminUsers from './Pages/AdminUsers';
+
 
 function App() {
   return (
@@ -19,6 +23,11 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/services' element={<Services />} />
+        <Route path='/admin' element={<AdminLayout />} />
+        <Route path='/admin/users' element={<AdminUsers />} />
+        <Route path='/admin/contacts' element={<AdminContacts />} />
+     
+
       </Routes>
       <Footer/>
     </BrowserRouter>
