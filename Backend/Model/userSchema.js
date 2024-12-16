@@ -19,7 +19,7 @@ userSchema.methods.generateToken = async function(){
     },
   "uzairkhan",
   {
-    expiresIn:"5m"
+    expiresIn:"602m"
   }
   )
   } catch (error) {
