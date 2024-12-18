@@ -45,7 +45,7 @@ const AdminUsers = () => {
   }, []); // Empty array ensures it runs once when the component mounts
 
   const handleDelete = async(userId) => {
-
+    const token = localStorage.getItem("token");
 
     try {
       const response = await fetch(`http://localhost:8000/admin/users/delete/${userId}`,{
