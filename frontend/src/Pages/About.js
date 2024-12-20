@@ -8,7 +8,7 @@ function About() {
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-cyan-400">
       <div className="text-center p-8 bg-black bg-opacity-50 rounded-lg shadow-xl w-full max-w-md">
         <h1 className="text-4xl font-bold text-white mb-4">
-          Welcome{'  '}
+          Welcome{''}
           <span className={user ? 'text-yellow-400 mr-4' : 'text-gray-200 mr-4'}>
   {user ? user.username : 'Guest'}
 </span>

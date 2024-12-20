@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Use Link for navigation if using React Router
+import { Link, useNavigate } from 'react-router-dom'; 
 import { useAuth } from '../users/auth';
 
 function Navbar1() {
-  const {isLoggedIn, LogoutUser} = useAuth();
+  const { isLoggedIn, LogoutUser, user } = useAuth();
   const [darkMode, setDarkMode] = useState(true); // Default to dark mode
-const navigate = useNavigate()
+  console.log(user);
+  const navigate = useNavigate();
+
   const handleLogout = async () => {
     try {
       await LogoutUser(); // Ensure logout completes before navigating
@@ -19,8 +21,8 @@ const navigate = useNavigate()
   const toggleDarkMode = () => {
     setDarkMode((prev) => !prev);
     document.body.classList.toggle("light", !darkMode);
-    
   };
+
   return (
     <nav className="bg-gray-800 text-white">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -32,19 +34,22 @@ const navigate = useNavigate()
           <Link to="/about" className="hover:text-gray-300">About</Link>
           <Link to="/contact" className="hover:text-gray-300">Contact</Link>
           <Link to="/services" className="hover:text-gray-300">Services</Link>
-          {
-            isLoggedIn ? (<Link to="/logout" className="hover:text-gray-300"  onClick={handleLogout}>Logout</Link>)
-            :
-          (
+
+          {isLoggedIn && user && user.userData && user.userData.isAdmin && (
+            <Link to="/admin" className="hover:text-gray-300">Admin Dashboard</Link>
+          )}
+
+          {isLoggedIn ? (
+            <Link to="/logout" className="hover:text-gray-300" onClick={handleLogout}>Logout</Link>
+          ) : (
             <>
-          <Link to="/login" className="hover:text-gray-300">Login</Link>
-          <Link to="/register" className="hover:text-gray-300">Register</Link>
-          </>
-          )
-}
+              <Link to="/login" className="hover:text-gray-300">Login</Link>
+              <Link to="/register" className="hover:text-gray-300">Register</Link>
+            </>
+          )}
           <button onClick={toggleDarkMode} className="p-2 bg-indigo-600 text-white rounded">
-        Switch Theme
-      </button>
+            Switch Theme
+          </button>
         </div>
       </div>
     </nav>

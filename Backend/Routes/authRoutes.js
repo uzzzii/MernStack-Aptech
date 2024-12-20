@@ -13,4 +13,6 @@ authRoutes.post('/contact',Contact)
 
 authRoutes.get('/getUsers', authMiddleware, getUsers);
 
+authRoutes.get('/getUser', authMiddleware, user);
+
 module.exports = authRoutes;

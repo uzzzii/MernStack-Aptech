@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) =>
   const userAuthentication = async () =>
   {
     try {
-      const response = await fetch("http://localhost:8000/auth/user",
+      const response = await fetch("http://localhost:8000/auth/getUser",
         {
         method : "GET",
         headers : { "Authorization" : `Bearer ${token}`}
@@ -35,8 +35,8 @@ export const AuthProvider = ({ children }) =>
     if(response.ok)
     {
       const data = await response.json();
-      console.log(data.msg);
-      setUser(data.msg);
+      console.log(data.userData);
+      setUser(data);
     }
     else
     {
