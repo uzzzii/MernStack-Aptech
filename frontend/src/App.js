@@ -10,6 +10,7 @@ import Footer from './Pages/Footer';
 import { AdminLayout } from './Layout/AdminLayout';
 import AdminContacts from './Pages/AdminContacts';
 import AdminUsers from './Pages/AdminUsers';
+import AdminEdits from './Pages/AdminEdits';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path='/admin' element={<AdminLayout />} />
         <Route path='/admin/users' element={<AdminUsers />} />
         <Route path='/admin/contacts' element={<AdminContacts />} />
+        <Route path='/admin/editUser/:id' element={<AdminEdits />} />
      
 
       </Routes>

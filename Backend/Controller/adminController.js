@@ -21,4 +21,14 @@ const deleteUserById = async(req,res)=>
     }
 }
 
-module.exports = {getAllUsers, deleteUserById};
+const getUserById = async(req,res)=>{
+    try {
+        const userId = await req.params.id;
+        const data = await User.findOne({_id : userId},{password:0})
+        return res.status(200).json(data);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+module.exports = {getAllUsers, deleteUserById,getUserById};
