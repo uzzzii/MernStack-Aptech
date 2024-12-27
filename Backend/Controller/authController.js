@@ -68,5 +68,26 @@ const user = async(req,res)=>
     
   }
 }
+const UpdateUser = async (req, res) => {
 
-module.exports = { Login, Registration, getUsers,user };
+    try {
+      const {id} = req.params;
+      const Updatedata = req.body;
+  
+      const user = await User.findByIdAndUpdate(id, Updatedata, { 
+        new: true,
+        runValidators: true,
+      });
+ 
+    if (!user) {
+      return res.status(404).json({message : "User Not Found"});
+    }
+    return res.status(200).json({ message: "User Updated Successfully", UpdateUser: user });   
+  } 
+  catch (error) {
+    console.log ('Error updating user:', error);
+    res.status(500).json({message: 'Error updating user', error: error.message });
+  }
+};
+
+module.exports = { Login, Registration, getUsers,user , UpdateUser };
